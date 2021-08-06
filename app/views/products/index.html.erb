@@ -1,14 +1,26 @@
-<h1>Products</h1>
+<h1>Welcome to Mario's Site</h1>
+<div class="row">
+  <div class="col-sm-5">
+  <h3>About us</h3>
 
-<% if @products.any? %>
-  <ul>
-    <% @products.each do |product| %>
-      <li><%= link_to product.name, product_path(product) %></li>
+  <p>The landing page should include basic information about the company and should allow users to easily navigate to other areas of the site. This page should also include the three most recently added products and the product with the most reviews. See more information in the Scopes section below.</p>
+  </div>
+  <div class="col-sm-1"> </div>
+  <div class="col-sm-4">
+    <h3>Available Products</h3>
+
+    <% if @products.any? %>
+      <ul>
+        <% @products.each do |product| %>
+          <li><%= link_to product.name, product_path(product) %></li>
+        <% end %>
+      </ul>
+    <% else %>
+      <p>There are no products yet.</p>
     <% end %>
-  </ul>
-<% else %>
-  <p>There are no products yet.</p>
-<% end %>
 
 
-<p><%= link_to "Create new product", new_product_path %></p>
+    <p><%= link_to "Create new product", new_product_path %></p>
+  </div>
+</div>
+    
