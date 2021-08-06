@@ -1,35 +1,58 @@
-<h1>Welcome to Mario's Site</h1>
+<h1>Welcome to Marios Site</h1>
 <div class="row">
-  <div class="col-sm-5">
-  <h3>About us</h3>
-
-  <p>The landing page should include basic information about the company and should allow users to easily navigate to other areas of the site. This page should also include the three most recently added products and the product with the most reviews. See more information in the Scopes section below.</p>
-  </div>
-  <div class="col-sm-1"> </div>
   <div class="col-sm-4">
-    <h3>All Available Products</h3>
+    <h3>About us</h3>
 
+    <p>The landing page should include basic information about the company and should allow users to easily navigate to other areas of the site. This page should also include the three most recently added products and the product with the most reviews. See more information in the Scopes section below.</p>
+    <br><br>
+
+    <h3>Most Recent Products</h3>
     <% if @products.any? %>
       <ul>
-        <% @products.each do |product| %>
+        <% @products.most_recent.each do |product| %>
           <li><%= link_to product.name, product_path(product) %></li>
         <% end %>
       </ul>
     <% else %>
       <p>There are no products yet.</p>
     <% end %>
-
-
-    <p><%= link_to "Create new product", new_product_path %></p>
-
     <br><br>
-    <h3>Most Recent Products</h3>
-    <% if @recent_products.any? %>
+
+    <h3>Most Reviewed Products</h3>
+    <% if @products.any? %>
+      <ol>
+        <% @products.most_reviews.each do |product| %>
+          <li><%= link_to product.name, product_path(product) %></li>
+        <% end %>
+      </ol>
+    <% else %>
+      <p>There are no products yet.</p>
+    <% end %>
+    <br><br>
+
+    <h3>American Products</h3>
+    <% if @products.any? %>
       <ul>
-        <% @recent_products.each do |product| %>
+        <% @products.american.each do |product| %>
           <li><%= link_to product.name, product_path(product) %></li>
         <% end %>
       </ul>
+    <% else %>
+      <p>There are no American products available.</p>
+    <% end %>
+  </div>
+  <div class="col-sm-1"> </div>
+  <div class="col-sm-4">
+
+
+    <h3>All Available Products</h3>
+    <p><%= link_to "Add new product", new_product_path %></p>
+    <% if @products.any? %>
+      <ol>
+        <% @products.each do |product| %>
+          <li><%= link_to product.name, product_path(product) %></li>
+        <% end %>
+      </ol>
     <% else %>
       <p>There are no products yet.</p>
     <% end %>
