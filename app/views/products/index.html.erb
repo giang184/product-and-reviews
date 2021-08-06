@@ -7,7 +7,7 @@
   </div>
   <div class="col-sm-1"> </div>
   <div class="col-sm-4">
-    <h3>Available Products</h3>
+    <h3>All Available Products</h3>
 
     <% if @products.any? %>
       <ul>
@@ -21,6 +21,18 @@
 
 
     <p><%= link_to "Create new product", new_product_path %></p>
+
+    <br><br>
+    <h3>Most Recent Products</h3>
+    <% if @recent_products.any? %>
+      <ul>
+        <% @recent_products.each do |product| %>
+          <li><%= link_to product.name, product_path(product) %></li>
+        <% end %>
+      </ul>
+    <% else %>
+      <p>There are no products yet.</p>
+    <% end %>
   </div>
 </div>
     
