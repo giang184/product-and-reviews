@@ -43,19 +43,19 @@
   </div>
   <div class="col-sm-1"> </div>
   <div class="col-sm-4">
-
-
-    <h3>All Available Products</h3>
-    <p><%= link_to "Add new product", new_product_path %></p>
-    <% if @products.any? %>
-      <ol>
-        <% @products.each do |product| %>
-          <li><%= link_to product.name, product_path(product) %></li>
-        <% end %>
-      </ol>
-    <% else %>
-      <p>There are no products yet.</p>
-    <% end %>
+    <div class = "all_product">
+      <h3>All Available Products</h3>
+      <p><%= link_to "Add new product", new_product_path %></p>
+      <% if @products.any? %>
+        <ol>
+          <% @products.each do |product| %>
+            <li><%= link_to product.name, product_path(product) %></li>
+          <% end %>
+        </ol>
+      <% else %>
+        <p>There are no products yet.</p>
+      <% end %>
+    </div>
   </div>
 </div>
     
