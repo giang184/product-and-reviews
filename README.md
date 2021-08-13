@@ -1,48 +1,56 @@
-## Description
+# Products and Reviews by Andrew Giang
+This project creates an application that tracks user created products and reviews using a one-to-many relationship. On the application, you can view, add, update, and delete instances of both. 
 
-This is a basic scaffolded Rails project using Docker with Ruby 2.6.5, Rails 5.2.4, and Postgres 12.1. This project can be used in lieu of installing Ruby, Rails and Postgres on your machine. When you run `docker-compose up`, Docker will create two containers on your machine: a Ruby/Rails environment running the local server and a Postgres container where your database is stored.
+## Technology Used
+* _Ruby_
+* _Docker_
+* _Ruby Gems: rspec, pry, faker, bootstrap, capybara, shoulda-matchers, simplecov_
+* _Postgres_
 
-### Windows Users
+## Objectives
 
-You will need to uncomment the following line in `Dockerfile` for the `entrypoint.sh` script to run correctly:
+* Full CRUD functionality for both `project`s and `volunteers`s.
+* Routes are named using RESTful conventions.
+* Sinatra application uses views, instance variables and forms.
+* Sinatra routes process GET and POST requests/responses.
+* Project includes thorough and passing integration specs as well as specs for both classes.
+
+## Set up and Installation
+
+### Running Sinatra and Postgres
+
+To run both Sinatra and Postgres, type the following into the command line (you must be in the root directory of the project):
 
 ```
-RUN sed -i -e 's/\r$//' /usr/bin/entrypoint.sh
+$ docker-compose up --build
 ```
 
-This line switches the line ending format so it works correctly with Windows. (Note that if the line above is uncommented, the script won't run correctly with Mac machines.)
+If you nagivate to `http://localhost:4567/` without setting up a database, though, you'll get a `PG::ConnectionBad` error.
 
-### Running Rails and Postgres Servers
+### Using psql
 
-* Run `docker-compose up` to run the local server at `localhost:3000`. However, if you go to `localhost:3000`, you will see the DB is not set up yet.
+To do any database management, including creating, deleting, and altering databases, you need to use psql, a command line tool. That means you need to interactively connect to the running Postgres container.
 
-### Running Shell Commands
+You can use `$ docker-compose up --build` - while the Sinatra container won't work correctly without a database, both the Sinatra and Postgres containers will be running and you will be able to access them.
 
-To access a shell environment to run `rails c`, run migrations, or run other `rake` and `rails` tasks such as `rails routes`, you'll need to do the following.
+Once you have a Postgres container running, get the container ID with `$ docker ps`.
 
-Run the following command in the root directory of the project:
+Next, you can run psql with the following command:
 
 ```
-$ docker-compose run web sh
+$ docker exec -it -u postgres [CONTAINER_ID] psql
 ```
 
-It's not necessary for the containers to be running (with `$ docker-compose up`).
+At this point, you can create and alter databases as needed. If you want to see the database connection in action with the current Sinatra application, just do the following in psql:
 
-This will open a shell where you can run any commands in the web application's environment. This includes the following commands:
+```
+CREATE DATABASE projects;
+```
 
-* `$ bundle exec rake db:create` (and any other Rake commands)
-* `$ rails routes` and `$ rails c` (as well as any other Rails commands)
-* `$ bundle exec rspec` (to run tests)
-* `$ irb` (if you just need a basic Ruby REPL)
+Once you've created the database, you can run the local Sinatra server and see the following string at `http://localhost:4567/`:
 
-### What if I want to add more gems to my project?
+```
+This is connected to the database record_store.
+```
 
-You'll need to complete the following steps:
-
-* First, add the gems to the project.
-
-* Run `docker-compose run web bundle install`. This will bundle the new gems.
-
-* Next, run `docker-compose up --build`. This will rebuild the project.
-
-To read Docker's documentation on running projects using Ruby and Rails, see [Quickstart: Compose and Rails](https://docs.docker.com/compose/rails/).
+When you're done running the server, you should always type in `docker-compose down` to gracefully stop the container.
