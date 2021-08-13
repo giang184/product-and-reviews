@@ -13,15 +13,26 @@
  *= require_tree .
  *= require_self
  */
-@import "bootstrap-sprockets";
 @import "bootstrap";
 
 body {
-  background-image: url("https://media.istockphoto.com/photos/light-green-defocused-blurred-motion-abstract-background-picture-id1138288758?k=6&m=1138288758&s=612x612&w=0&h=rwNnAXEgmHzxpeb7SY0A2KVMOQhkBaoml1T6HEaW7Fs=");
+  background-color: rgb(226, 225, 182);
 }
 
 .container {
-  background-image: url("https://static-cse.canva.com/blob/140234/Rainbow-Gradient-Pink-and-Purple-Zoom-Virtual-Background.png");
-  margin: 100px;
   padding: 30px;
+  background-color: azure;
+  margin-top: 50px;
+}
+
+.nav-item {
+  color: white;
+}
+
+#alert {
+  color: red;
+}
+
+#notice {
+  color: red;
 }
