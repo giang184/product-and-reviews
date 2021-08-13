@@ -18,10 +18,10 @@ def create
   end
 end
 
-# def admin
-#     @users = User.all
-#     render :admin_user
-# end
+def admin
+    @users = User.all
+    render :admin
+end
 
 def edit
   @user = User.find(params[:id])

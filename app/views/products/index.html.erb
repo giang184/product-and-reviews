@@ -10,7 +10,7 @@
   <p>There are no products yet.</p>
 <% end %>
 <br>
-<h2 class="admin">Admin only</h2>
 <% if current_user && current_user.admin %>
+  <h2 class="admin">Admin only</h2>
   <p><%= link_to "Add a new product", new_product_path %></p>
 <% end %>

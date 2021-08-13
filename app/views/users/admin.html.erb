@@ -1,0 +1,16 @@
+<% if @users.any? %>
+  <h4>Here are the users in the database. (No edit priveledges yet!)</h4>
+
+  <% @users.each do |user| %>
+    <ul>
+      <li>
+      <%= user.email%>
+      <% if user.admin %>
+      (Admin)
+      <% end %>
+      </li>
+    </ul>
+  <% end %>
+<% else %>
+  <p>There are no users.</p>
+<% end %>
