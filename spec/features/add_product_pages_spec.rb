@@ -25,9 +25,9 @@ describe "the add a product process" do
     fill_in 'Cost', :with => '7.95'
     fill_in 'Country of origin', :with => 'Mexican'
     click_on 'Create Product'
-    within('.all_product') do
-      click_on 'Blue Label'
-    end
+    # within('.all_product') do
+    #   click_on 'Blue Label'
+    # end
     click_on 'Edit'
     fill_in 'Name', :with => 'Black Label'
     fill_in 'Cost', :with => '3.95'
