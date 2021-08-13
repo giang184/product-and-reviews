@@ -1,4 +1,4 @@
-<h1>Welcome to Marios Site</h1>
+<h1>Mario&#39;s Speciality Food Products</h1>
 <div class="row">
   <div class="col-sm-4">
     <h3>About us</h3>
@@ -45,7 +45,6 @@
   <div class="col-sm-4">
     <div class = "all_product">
       <h3>All Available Products</h3>
-      <p><%= link_to "Add new product", new_product_path %></p>
       <% if @products.any? %>
         <ol>
           <% @products.each do |product| %>

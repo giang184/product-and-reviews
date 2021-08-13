@@ -1,18 +1,16 @@
-<div class="row">
-  <div class="col-sm-4">
-
-    <h1>Products</h1>
-    <% if @products.any? %>
-    <ul>
-      <% @products.each do |product| %>
-        <li><%= link_to product.name, product_path(product) %></li>
-      <% end %>
-    </ul>
-    <% else %>
-      <p>There are no products yet.</p>
-    <% end %>
-  
-    <p><%= link_to "create new product", new_product_path %></p>
-
-  </div>
-  <div class="col-sm-4">
+<h1>Mario&#39;s Speciality Food Products</h1>
+<h2>Product List:</h2>
+<% if @products.any? %>
+<ul>
+  <% @products.each do |product| %>
+    <li><%= link_to product.name, product_path(product) %></li>
+  <% end %>
+</ul>
+<% else %>
+  <p>There are no products yet.</p>
+<% end %>
+<br>
+<h2 class="admin">Admin only</h2>
+<% if current_user && current_user.admin %>
+  <p><%= link_to "Add a new product", new_product_path %></p>
+<% end %>
