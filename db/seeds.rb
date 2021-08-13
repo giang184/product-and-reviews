@@ -46,4 +46,4 @@ end
   end
 end
 
-p "Created #{Product.count} products and #{Review.count} reviews"
+p "Created ##{Product.count} products, and #{Review.count} reviews"
